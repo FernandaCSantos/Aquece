@@ -33,9 +33,15 @@ public class PerfilVO implements Serializable{
 		this.password = password;
 	}
 	
+	public Integer getCod() {
+		return cod;
+	}
+	public void setCod(Integer cod) {
+		this.cod = cod;
+	}
 	@Override
 	public String toString() {
-		return "PerfilVO [nomePerfil=" + nomePerfil + ", user=" + user + ", password=" + password + "]";
+		return "PerfilVO [cod=" + cod + ", nomePerfil=" + nomePerfil + ", user=" + user + "]";
 	}
 	
 	
