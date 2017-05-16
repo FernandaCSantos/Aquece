@@ -14,7 +14,7 @@ import br.com.aquece.Vo.ProdutoVO;
 public class ProdutosServiceFacadeImpl implements ProdutosServiceFacade {
 
 	@Autowired
-    ProdutoDao produtoDao;
+	private ProdutoDao produtoDao;
 	/**
 	 * {@inheritDoc}
 	 */

@@ -1,7 +1,6 @@
 package br.com.aquece.Dao;
 
 import br.com.aquece.Vo.PerfilVO;
-import br.com.aquece.Vo.ProdutoVO;
 
 /**
  * Interface facade de Perfil

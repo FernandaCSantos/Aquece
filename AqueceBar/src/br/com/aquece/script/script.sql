@@ -6,10 +6,14 @@ create table produto(codProduto int not null primary key , descricao varchar(50)
 
 create table perfil(codPerfil int not null primary key , nomePerfil varchar(50) not null, usuario varchar(30), senha varchar(30));
 
-create table mesa(codMesa int not null primary key, horaAbertura timestamp not null ,horaFechamento timestamp not null , codProduto int not null,
-FOREIGN KEY (codProduto) REFERENCES produto(codProduto));
+create table mesa(codMesa int not null primary key);
 
-create table vendas(codVenda int not null primary key, codMesa int not null ,codProduto int not null , codPerfil int not null,
+/**
+ * REFORMULAR SQL
+ */
+create table vendas(codVenda int not null primary key, codMesa int not null ,codProduto int , codPerfil int not null,
+horaAbertura timestamp not null ,horaFechamento timestamp , total double,
+FOREIGN KEY (codProduto) REFERENCES produto(codProduto)
   FOREIGN KEY (codMesa) REFERENCES mesa(codMesa),
  FOREIGN KEY (codProduto) REFERENCES produto(codProduto),
  FOREIGN KEY (codPerfil) REFERENCES perfil(codPerfil));

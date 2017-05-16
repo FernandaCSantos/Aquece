@@ -8,7 +8,7 @@ import br.com.aquece.Vo.PerfilVO;
 public class PerfilServiceFacadeImpl implements PerfilServiceFacade {
 
 	@Autowired
-    PerfilDao perfilDao;
+    private PerfilDao perfilDao;
 	/**
 	 * {@inheritDoc}
 	 */
