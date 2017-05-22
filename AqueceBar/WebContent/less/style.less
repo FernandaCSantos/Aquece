@@ -1,0 +1,458 @@
+@import url(http://fonts.googleapis.com/css?family=Ubuntu:400,500);
+@import url(http://weloveiconfonts.com/api/?family=entypo|zocial);
+
+* {
+  font-family: 'Ubuntu', sans-serif;
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  -ms-transition: all 0.2s ease-out;
+  -o-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  position: relative;
+}
+
+[class*="entypo-"]:before {
+  font-family: 'entypo', sans-serif;
+}
+[class*="zocial-"]:before {
+  font-family: 'zocial', sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+  overflow: visible;
+}
+::-webkit-scrollbar-track {
+  background-clip: padding-box;
+  background-color: fade(#FFF, 20%);
+  border: solid transparent;
+  border-width: 1px 1px 1px 6px;
+}
+::-webkit-scrollbar-track:horizontal {
+  border-width: 6px 1px 1px 1px;
+}
+::-webkit-scrollbar-track:hover {
+  background-color: fade(#F80, 20%);
+}
+::-webkit-scrollbar-track:active {
+  background-color: fade(#F80, 30%);
+}
+::-webkit-scrollbar-thumb {
+  background-color: fade(#F80, 50%);
+  background-clip: padding-box;
+  border: solid transparent;
+  border-width: 1px 1px 1px 6px;
+  min-height: 28px;
+}
+::-webkit-scrollbar-thumb:horizontal {
+  border-width: 6px 1px 1px 1px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: fade(#F80, 70%);
+}
+::-webkit-scrollbar-thumb:active {
+  background-color: #F80;
+}
+::-webkit-scrollbar-corner {
+  background: transparent
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+}
+
+#body {
+  div#main-header {
+    z-index: 3;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 40px;
+    background: #444;
+    padding: 0 0 0 20px;
+    
+    h1 {
+      color: #FFF;
+      margin: 0;
+      font-size: 20px;
+      line-height: 40px;
+      float: left;
+    }
+    
+    span#user-info {
+      color: #FFF;
+      line-height: 40px;
+      float: right;
+      
+      img {
+        width: 36px;
+        height: 36px;
+        float: right;
+        margin: 2px 2px 2px 0;
+      }
+      
+      a {
+        display: inline-block;
+        color: #FFF;
+        text-decoration: none;
+        width: 0px;
+        overflow: hidden;
+        padding: 0;
+      }
+      
+      &:hover {
+        a {
+          padding: 0 3px;
+          width: 25px;
+        }
+      }
+    }
+  }
+  
+  div#main-content {
+    z-index: 2;
+    position: fixed;
+    top: 40px;
+    left: 250px;
+    right: 0px;
+    bottom: 0px;
+    padding: 0px;
+    overflow: auto;
+    background: #FFF;
+    
+    h2#partial-title {
+      color: #F80;
+      margin: 30px 0 0 30px;
+      font-weight: normal;
+    }
+    
+    ul#partial-navigation {
+      margin: 0px;
+      padding: 10px 15px 30px;
+      float: left;
+      width: 100%;
+      
+      li {
+        float: left;
+        list-style: none;
+        padding: 0 15px;
+        
+        a {
+          color: #999;
+          text-decoration: none;
+          font-size: 20px;
+          
+          &:hover {
+            color: #666;
+          }
+          
+          &.active-tab {
+            color: #F80;
+          }
+        }
+      }
+    }
+    
+    div#partial-content {
+      float: left;
+      width: 100%;
+      padding: 0 20px 20px;
+    }
+  }
+  
+  #main-navigation {
+    z-index: 1;
+    position: fixed;
+    top: 40px;
+    left: 0px;
+    width: 260px;
+    bottom: 0px;
+    background-color: #F80;
+    overflow: auto;
+    overflow-x: hidden;
+    padding-bottom: 30px;
+    
+    ul {
+      list-style: none;
+      padding: 0px;
+      margin: 0px;
+      
+      li {
+        display: inline-block;
+        white-space: nowrap;
+        width: 100%;
+        
+        &.header {
+          color: #F80;
+          line-height: 40px;
+          padding-left: 20px;
+          background-color: darken(#F80, 20%);
+          text-transform: uppercase;
+          border-bottom: 1px solid lighten(#F80, 15%);
+        }
+        
+        a {
+          display: inline-block;
+          text-decoration: none;
+          font-size: 18px;
+          height: 50px;
+          line-height: 50px;
+          padding-right: 20px;
+          width: 100%;
+          color: #FFF;
+          border-bottom: 0px solid lighten(#F80, 15%);
+          
+          
+          &:before {
+            display: inline-block;
+            font-size: 23px;
+            color: #FFF;
+            width: 50px;
+            text-align: center;
+            line-height: 50px;
+            
+            -webkit-transition: all 0.2s ease-out;
+            -moz-transition: all 0.2s ease-out;
+            -ms-transition: all 0.2s ease-out;
+            -o-transition: all 0.2s ease-out;
+            transition: all 0.2s ease-out;
+          }
+          
+          &:hover {
+            background-color: lighten(#F80, 15%);
+          }
+          
+          .item-counter {
+            display: inline-block;
+            font-size: .8em;
+            line-height: 1em;
+            padding: .15em .4em;
+            border: 0px;
+            -webkit-border-radius: .6em;
+            -moz-border-radius: .6em;
+            border-radius: .6em;
+            float: right;
+            margin-top: 17px;
+            background-color: #B72329;
+          }
+          
+          .shortcut-info {
+            display: inline-block;
+            float: right;
+            width: 40px;
+            height: 30px;
+            line-height: 30px;
+            color: #F80;
+            text-align: center;
+            background-color: #444;
+            text-transform: uppercase;
+            font-size: .8em;
+            margin-top: 10px;
+            margin-right: -100px;
+            -webkit-transition-delay: 0s;
+            -moz-transition-delay: 0s;
+            -ms-transition-delay: 0s;
+            -o-transition-delay: 0s;
+            transition-delay: 0s;
+            
+            &:before {
+              font-family: 'entypo', sans-serif;
+              content: "\2328";
+              padding-right: 5px;
+            }
+          }
+          
+          &.active-tab {
+            background-color: #FFF;/*lighten(#F80, 40%);*/
+            color: #F80;
+            
+            &:before {
+              color: #F80;
+            }
+            
+            .shortcut-info {
+              display: none;
+            }
+            
+            .item-counter {
+              color: #FFF;
+            }
+          }
+        }
+      }
+    }
+    
+    .shortcut-label {
+      display: block;
+      position: fixed;
+      bottom: 0px;
+      left: 0px;
+      height: 30px;
+      width: 250px;
+      background-color: #444;
+      color: #F80;
+      font-size: .8em;
+      line-height: 30px;
+      text-transform: uppercase;
+      
+      &:before {
+        display: inline-block;
+        width: 30px;
+        text-align: center;
+      }
+    }
+    &::-webkit-scrollbar {
+      width: 10px;
+    }
+    &::-webkit-scrollbar-track {
+      background-color: fade(#FFF, 80%);
+      border-color: #FFF;
+      border-width: 0;
+    }
+    &::-webkit-scrollbar-track:active {
+      background-color: fade(#FFF, 70%);
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: fade(#F80, 70%);
+      border-color: transparent;
+      border-width: 0 0 30px 1px;
+      min-height: 28px;
+    }
+    &::-webkit-scrollbar-thumb:hover {
+      background-color: fade(#F80, 70%);
+    }
+    &::-webkit-scrollbar-thumb:active {
+      background-color: #F80;
+    }
+    &:hover {
+      width: 250px;
+      
+      ul li a {
+        padding-right: 10px;
+      }
+    }
+  }
+  
+  a.mailcounter {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    color: #F80;
+    text-decoration: none;
+    font-size: 18px;
+    float: right;
+    font-weight: 500;
+    text-align: center;
+    text-shadow: none;
+    -webkit-animation: mailWiggle 5s infinite;
+    -moz-animation: mailWiggle 5s infinite;
+    -o-animation: mailWiggle 5s infinite;
+    animation: mailWiggle 5s infinite;
+    
+    &:before {
+      font-size: 40px;
+      color: #EEE;
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      width: 100%;
+      line-height: 50px;
+      
+      -webkit-transition: all 0.2s ease-out;
+      -moz-transition: all 0.2s ease-out;
+      -ms-transition: all 0.2s ease-out;
+      -o-transition: all 0.2s ease-out;
+      transition: all 0.2s ease-out;
+    }
+    
+    &:hover {
+      text-shadow: -1px 0 #FFF, 1px 0 #FFF;
+      
+      &:before {
+        color: #FFF;
+        text-shadow: 0 0 16px #F80;
+      }
+    }
+  }
+  
+  &.showShortcuts {
+    #main-navigation {
+      width: 300px;
+      
+      ul { 
+        li { 
+          a {
+            padding-right: 10px;
+            
+            .item-counter {
+              display: none;
+            }
+            
+            .shortcut-info {
+              margin-right: 0px;
+              -webkit-transition-delay: 0.25s;
+              -moz-transition-delay: 0.25s;
+              -ms-transition-delay: 0.25s;
+              -o-transition-delay: 0.25s;
+              transition-delay: 0.25s;
+            }
+          }
+        }
+      }
+      
+      .shortcut-label {
+        width: 40px;
+        left: 250px;
+        
+        &:before {
+          width: 40px;
+        }
+      }
+    }
+    #main-content {
+      left: 300px;
+      right: -50px;
+    }
+  }
+}
+
+@media only screen and (min-width: 500px){
+  
+}
+
+/* animation */
+@-webkit-keyframes mailWiggle {
+  0% {-webkit-transform: scale(1) rotate(0deg);}
+  2% {-webkit-transform: scale(1.5) rotate(-10deg);}
+  3.5% {-webkit-transform: scale(1.5) rotate(10deg);}
+  5% {-webkit-transform: scale(1.5) rotate(0deg);}
+  6.5% {-webkit-transform: scale(1) rotate(0deg);}
+  100% {-webkit-transform: scale(1) rotate(0deg);}
+}
+@-o-keyframes mailWiggle {
+  0% {-webkit-transform: scale(1) rotate(0deg);}
+  2% {-webkit-transform: scale(1.5) rotate(-10deg);}
+  3.5% {-webkit-transform: scale(1.5) rotate(10deg);}
+  5% {-webkit-transform: scale(1.5) rotate(0deg);}
+  6.5% {-webkit-transform: scale(1) rotate(0deg);}
+  100% {-webkit-transform: scale(1) rotate(0deg);}
+}
+@keyframes mailWiggle {
+  0% {-webkit-transform: scale(1) rotate(0deg);}
+  2% {-webkit-transform: scale(1.5) rotate(-10deg);}
+  3.5% {-webkit-transform: scale(1.5) rotate(10deg);}
+  5% {-webkit-transform: scale(1.5) rotate(0deg);}
+  6.5% {-webkit-transform: scale(1) rotate(0deg);}
+  100% {-webkit-transform: scale(1) rotate(0deg);}
+}

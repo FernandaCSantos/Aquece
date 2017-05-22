@@ -1,5 +1,7 @@
 package br.com.aquece.Facade;
 
+import java.util.List;
+
 import br.com.aquece.Vo.MesaVO;
 
 /**
@@ -32,5 +34,7 @@ public interface MesaServiceFacade {
 	 * @param mesa
 	 */
 	public void inserirArquivoMortoMesa(MesaVO mesa);
+
+	public List<MesaVO> consultarSituacaoMesa();
 
 }

@@ -1,6 +1,7 @@
 package br.com.aquece.Dao;
 
 import java.sql.ResultSet;
+import java.util.List;
 
 import br.com.aquece.Vo.MesaVO;
 
@@ -41,6 +42,29 @@ public class MesaDaoImpl extends Conexao implements MesaDao {
 		}		
 		
 		return resp;
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public List<MesaVO> consultarSituacaoMesa() {
+		MesaVO resp = null;
+		List<MesaVO> lst = null;
+		try	{
+			open();
+			 stmt = con.prepareStatement("select * from vendas where horaFechamento is null");
+			 rs=stmt.executeQuery();
+			 while(rs.next()){
+				 resp = getMesa(rs,resp);
+				 lst.add(resp);
+			 }
+			close();
+		}catch (Exception e) {
+			e.getMessage();
+		}		
+		
+		return lst;
 	}
 
 

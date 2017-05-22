@@ -1,12 +1,11 @@
 package br.com.aquece.Facade;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import java.util.List;
 
 import br.com.aquece.Dao.MesaDao;
 import br.com.aquece.Vo.MesaVO;
 
 public class MesaServiceFacadeImpl implements MesaServiceFacade {
-	@Autowired
 	private MesaDao mesaDao;
 	
 	/**
@@ -51,6 +50,11 @@ public class MesaServiceFacadeImpl implements MesaServiceFacade {
 		}catch (Exception e) {
 			e.getMessage();
 		}
+	}
+
+	@Override
+	public List<MesaVO> consultarSituacaoMesa() {
+		return mesaDao.consultarSituacaoMesa();
 	}
 
 	

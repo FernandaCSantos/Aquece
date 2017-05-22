@@ -13,10 +13,11 @@ public class VendasVO implements Serializable{
 	private MesaVO mesaVO;
 	private ProdutoVO produtoVO;
 	private PerfilVO perfilVO;
-	private Calendar horaAbertura;
-	private Calendar horaFechamento;
 	private Double total;
 	private Integer cod;
+	private Calendar horaAbertura;
+	private Calendar horaFechamento;
+	
 	public MesaVO getMesaVO() {
 		return mesaVO;
 	}
@@ -36,19 +37,6 @@ public class VendasVO implements Serializable{
 		this.perfilVO = perfilVO;
 	}
 	
-	public Calendar getHoraAbertura() {
-		return horaAbertura;
-	}
-	public void setHoraAbertura(Calendar horaAbertura) {
-		this.horaAbertura = horaAbertura;
-	}
-	public Calendar getHoraFechamento() {
-		return horaFechamento;
-	}
-	public void setHoraFechamento(Calendar horaFechamento) {
-		this.horaFechamento = horaFechamento;
-	}
-	
 	public Double getTotal() {
 		return total;
 	}
@@ -62,11 +50,23 @@ public class VendasVO implements Serializable{
 	public void setCod(Integer cod) {
 		this.cod = cod;
 	}
+	public Calendar getHoraAbertura() {
+		return horaAbertura;
+	}
+	public void setHoraAbertura(Calendar horaAbertura) {
+		this.horaAbertura = horaAbertura;
+	}
+	public Calendar getHoraFechamento() {
+		return horaFechamento;
+	}
+	public void setHoraFechamento(Calendar horaFechamento) {
+		this.horaFechamento = horaFechamento;
+	}
 	@Override
 	public String toString() {
-		return "VendasVO [mesaVO=" + mesaVO + ", produtoVO=" + produtoVO + ", perfilVO=" + perfilVO + ", horaAbertura="
-				+ horaAbertura + ", horaFechamento=" + horaFechamento + ", total=" + total + ", cod=" + cod + "]";
+		return "VendasVO [mesaVO=" + mesaVO + ", produtoVO=" + produtoVO + ", perfilVO=" + perfilVO + ", total=" + total
+				+ ", cod=" + cod + ", horaAbertura=" + horaAbertura + ", horaFechamento=" + horaFechamento + "]";
 	}
 	
-
+	
 }

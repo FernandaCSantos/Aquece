@@ -1,6 +1,7 @@
 package br.com.aquece.Vo;
 
 import java.io.Serializable;
+import java.util.Calendar;
 
 public class MesaVO implements Serializable{
 	/**
@@ -9,7 +10,6 @@ public class MesaVO implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private Integer numeroMesa;
-
 	
 	public Integer getNumeroMesa() {
 		return numeroMesa;
@@ -21,6 +21,7 @@ public class MesaVO implements Serializable{
 	public String toString() {
 		return "MesaVO [numeroMesa=" + numeroMesa + "]";
 	}
+
 	
 	
 	

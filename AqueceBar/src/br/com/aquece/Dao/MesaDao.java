@@ -1,5 +1,7 @@
 package br.com.aquece.Dao;
 
+import java.util.List;
+
 import br.com.aquece.Vo.MesaVO;
 
 /**
@@ -32,5 +34,6 @@ public interface MesaDao {
 	 * @param mesa
 	 */
 	public void inserirArquivoMortoMesa(MesaVO mesa);
+	public List<MesaVO> consultarSituacaoMesa();
 
 }
