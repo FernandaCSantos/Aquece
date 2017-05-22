@@ -1,15 +1,10 @@
 package br.com.aquece.action;
 
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Controller;
-
 import com.opensymphony.xwork2.ActionSupport;
 
 import br.com.aquece.Facade.MesaServiceFacade;
 import br.com.aquece.Vo.MesaVO;
 
-@Controller
-@Scope("request")
 public class MesaAction extends ActionSupport {
 
 	private MesaServiceFacade mesaServiceFacade;

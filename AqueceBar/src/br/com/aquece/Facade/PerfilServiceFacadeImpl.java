@@ -1,13 +1,11 @@
 package br.com.aquece.Facade;
 
-import org.springframework.beans.factory.annotation.Autowired;
 
 import br.com.aquece.Dao.PerfilDao;
 import br.com.aquece.Vo.PerfilVO;
 
 public class PerfilServiceFacadeImpl implements PerfilServiceFacade {
 
-	@Autowired
     private PerfilDao perfilDao;
 	/**
 	 * {@inheritDoc}

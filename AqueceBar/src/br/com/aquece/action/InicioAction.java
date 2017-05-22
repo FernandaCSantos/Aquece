@@ -1,14 +1,9 @@
 package br.com.aquece.action;
 
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Controller;
-
 import com.opensymphony.xwork2.ActionSupport;
 
 import br.com.aquece.Vo.VendasVO;
 
-@Controller
-@Scope("request")
 public class InicioAction extends ActionSupport{
 	
 	/**

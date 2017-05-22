@@ -1,0 +1,14 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="actionbar" extends="struts-default">
+	<!-- pessoa.cadastrar é o Action do form -->
+     <action name="iniciar"
+	         class="br.com.aquece.action.InicioAction"
+	         method="inicio">
+	       <result name="success">WebContent/index.jsp</result>
+     </action>
+	</package>
+</struts>
