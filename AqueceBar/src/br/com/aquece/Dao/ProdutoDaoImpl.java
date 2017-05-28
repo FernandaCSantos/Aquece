@@ -35,7 +35,7 @@ public class ProdutoDaoImpl extends Conexao implements ProdutoDao{
 			 stmt = con.prepareStatement("select * from produto where codProduto = ?");
 			 stmt.setInt(1, produto.getCod());
 			 rs=stmt.executeQuery();
-			 getProduto(rs,resp);
+			resp = getProduto(rs);
 			close();
 		}catch (Exception e) {
 			e.getMessage();
@@ -127,20 +127,20 @@ public class ProdutoDaoImpl extends Conexao implements ProdutoDao{
 	 * Classe para resgatar os dados do produto;
 	 * @param produto
 	 */
-	public ProdutoVO getProduto(ResultSet rs, ProdutoVO resp){
+	public ProdutoVO getProduto(ResultSet rs){
+		ProdutoVO retorno = new ProdutoVO();
 		try{
 			if(rs.next()){
-				resp = new ProdutoVO();
-				resp.setCod(rs.getInt("codProduto"));
-				resp.setDesc(rs.getString("descricao"));
-				resp.setPreco(rs.getDouble("preco"));
-				resp.setQuantidade(rs.getInt("quantidade"));
+				retorno.setCod(rs.getInt("codProduto"));
+				retorno.setDesc(rs.getString("descricao"));
+				retorno.setPreco(rs.getDouble("preco"));
+				retorno.setQuantidade(rs.getInt("quantidade"));
 			}
 		}catch (Exception e) {
 			new Exception("Ocorreu um erro ao consultar os dados.");
 			
 		}
-		return resp;
+		return retorno;
 		
 	}
 }

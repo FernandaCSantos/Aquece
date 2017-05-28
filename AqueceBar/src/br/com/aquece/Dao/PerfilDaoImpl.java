@@ -9,6 +9,7 @@ public class PerfilDaoImpl extends Conexao implements PerfilDao {
 	@Override
 	public void inserirPerfil(PerfilVO perfil) {
 		try	{
+			perfil.setCod(lastId()+1);
 			open();
 			 stmt = con.prepareStatement("insert into perfil values (?,?,?,?)");
 			 setDadosPerfil(perfil);
@@ -19,6 +20,23 @@ public class PerfilDaoImpl extends Conexao implements PerfilDao {
 		}		
 	}
 
+	public Integer lastId(){
+		ResultSet resp = null;
+		Integer chave = null;
+		try {
+			open();
+			stmt = con.prepareStatement("select max(codPerfil) as maximo from perfil");
+			resp = stmt.executeQuery();
+			if(resp.next()){
+			chave = (resp.getInt("maximo"));
+			}
+			close();
+		} catch (Exception e) {
+			new Exception("Erro Interno");
+		}
+	
+		return chave;
+	}
 	@Override
 	public PerfilVO consultarPerfil(PerfilVO perfil) {
 		PerfilVO resp = null;

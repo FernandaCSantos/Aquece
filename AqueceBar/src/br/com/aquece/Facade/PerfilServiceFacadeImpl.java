@@ -1,13 +1,14 @@
 package br.com.aquece.Facade;
 
 
-import br.com.aquece.Dao.PerfilDao;
+import br.com.aquece.Dao.PerfilDaoImpl;
 import br.com.aquece.Vo.PerfilVO;
 
 public class PerfilServiceFacadeImpl implements PerfilServiceFacade {
 
-    private PerfilDao perfilDao;
-	/**
+    private PerfilDaoImpl perfilDao = new PerfilDaoImpl();
+	
+    /**
 	 * {@inheritDoc}
 	 */
 	@Override
@@ -47,4 +48,13 @@ public class PerfilServiceFacadeImpl implements PerfilServiceFacade {
 		perfilDao.excluirPerfil(perfil);
 	}
 
+	public PerfilDaoImpl getPerfilDao() {
+		return perfilDao;
+	}
+
+	public void setPerfilDao(PerfilDaoImpl perfilDao) {
+		this.perfilDao = perfilDao;
+	}
+
+	
 }

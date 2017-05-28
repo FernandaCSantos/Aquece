@@ -1,33 +1,40 @@
-console.clear();
 function abrirConsultarMesa(){
-	$("#abrirVenda").hide();
 	$("#consultarMesa").show();
+	$("#abrirVenda").hide();
 	$("#produto").hide();
+	$("#funcionario").hide();
+
 }
 function carregarIniciar(){
 	$("#abrirVenda").show();
 	$("#consultarMesa").hide();
 	$("#produto").hide();
+	$("#funcionario").hide();
 
 }
 function voltarIniciarMesas(){
 	$("#abrirVenda").show();
 	$("#consultarMesa").hide();
 	$("#produto").hide();
+	$("#funcionario").hide();
 
 	}
 function carregarConfiguracoes(){	
 	$("#abrirVenda").hide();
 	$("#consultarMesa").hide();
 	$("#produto").hide();
+	$("#funcionario").hide();
 
 }
 function carregarProduto(){	
 	$("#produto").show();
 	$("#abrirVenda").hide();
 	$("#consultarMesa").hide();
+	$("#funcionario").hide();
+
 }
 function carregarFuncionario(){	
+	$("#funcionario").show();
 	$("#abrirVenda").hide();
 	$("#consultarMesa").hide();
 	$("#produto").hide();

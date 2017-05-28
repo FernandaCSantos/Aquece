@@ -1,13 +1,13 @@
 package br.com.aquece.Facade;
 
 
-import br.com.aquece.Dao.ProdutoDao;
+import br.com.aquece.Dao.ProdutoDaoImpl;
 import br.com.aquece.Vo.ProdutoVO;
 
 
 public class ProdutosServiceFacadeImpl implements ProdutosServiceFacade {
 
-	private ProdutoDao produtoDao;
+	private ProdutoDaoImpl produtoDao = new ProdutoDaoImpl();
 	/**
 	 * {@inheritDoc}
 	 */
@@ -48,4 +48,13 @@ public class ProdutosServiceFacadeImpl implements ProdutosServiceFacade {
 		produtoDao.excluirProduto(produto);
 	}
 
+	public ProdutoDaoImpl getProdutoDao() {
+		return produtoDao;
+	}
+
+	public void setProdutoDao(ProdutoDaoImpl produtoDao) {
+		this.produtoDao = produtoDao;
+	}
+
+	
 }

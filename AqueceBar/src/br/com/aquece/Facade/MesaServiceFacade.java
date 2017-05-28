@@ -35,6 +35,6 @@ public interface MesaServiceFacade {
 	 */
 	public void inserirArquivoMortoMesa(MesaVO mesa);
 
-	public List<MesaVO> consultarSituacaoMesa();
+	public List<MesaVO> consultarSituacaoMesa(int flag);
 
 }

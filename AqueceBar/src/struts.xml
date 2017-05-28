@@ -3,12 +3,104 @@
 "http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>
-	<package name="actionbar" extends="struts-default">
-	<!-- pessoa.cadastrar é o Action do form -->
-     <action name="iniciar"
-	         class="br.com.aquece.action.InicioAction"
-	         method="inicio">
-	       <result name="success">WebContent/index.jsp</result>
-     </action>
+
+	<!-- METODO SERA SUBSTITUIDO PELO DE LOGIN -->
+	<package name="struts" extends="struts-default">
+		<action name="iniciar" class="br.com.aquece.action.InicioAction"
+			method="inicio">
+			<result name="success">index.jsp</result>
+		</action>
 	</package>
+
+	<package name="ajax" namespace="/" extends="json-default">
+
+		<!-- TESTE PRA EXPLICAR PARA OS MENINOS -->
+
+		<action name="iniciarAjax" class="br.com.aquece.action.InicioAction"
+			method="inicio">
+			<result type="json" />
+		</action>
+
+
+		<!-- AJAX DE MESAACTION -->
+
+		<action name="inserirMesa" class="br.com.aquece.action.MesaAction"
+			method="inserirMesa">
+			<result type="json" />
+		</action>
+
+		<action name="excluirMesa" class="br.com.aquece.action.MesaAction"
+			method="excluirMesa">
+			<result type="json" />
+		</action>
+		
+		<action name="consultarSituacaoMesa" class="br.com.aquece.action.MesaAction"
+			method="consultarSituacaoMesa">
+			<result type="json" />
+		</action>
+
+		<!-- AJAX DE PERFILACTION -->
+		<action name="inserirPerfil" class="br.com.aquece.action.PerfilAction"
+			method="inserirPerfil">
+			<result type="json" />
+		</action>
+
+		<action name="consultarPerfil" class="br.com.aquece.action.PerfilAction"
+			method="consultarPerfil">
+			<result type="json" />
+		</action>
+
+		<action name="alterarPerfil" class="br.com.aquece.action.PerfilAction"
+			method="alterarPerfil">
+			<result type="json" />
+		</action>
+
+		<action name="excluirPerfil" class="br.com.aquece.action.PerfilAction"
+			method="excluirPerfil">
+			<result type="json" />
+		</action>
+
+		<!-- AJAX DE PRODUTOSACTION -->
+		<action name="inserirProduto" class="br.com.aquece.action.ProdutosAction"
+			method="inserirProduto">
+			<result type="json" />
+		</action>
+
+		<action name="consultarProduto" class="br.com.aquece.action.ProdutosAction"
+			method="consultarProduto">
+			<result type="json" />
+		</action>
+
+		<action name="alterarProduto" class="br.com.aquece.action.ProdutosAction"
+			method="alterarProduto">
+			<result type="json" />
+		</action>
+
+		<action name="excluirProduto" class="br.com.aquece.action.ProdutosAction"
+			method="excluirProduto">
+			<result type="json" />
+		</action>
+
+		<!-- AJAX DE VENDASACTION -->
+		<action name="inserirVendas" class="br.com.aquece.action.VendasAction"
+			method="inserirVendas">
+			<result type="json" />
+		</action>
+
+		<action name="fecharVendas" class="br.com.aquece.action.VendasAction"
+			method="fecharVendas">
+			<result type="json" />
+		</action>
+
+		<action name="alterarVendas" class="br.com.aquece.action.VendasAction"
+			method="alterarVendas">
+			<result type="json" />
+		</action>
+
+		<action name="consultarVendas" class="br.com.aquece.action.VendasAction"
+			method="consultarVendas">
+			<result type="json" />
+		</action>
+	</package>
+
 </struts>
