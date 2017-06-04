@@ -33,7 +33,7 @@
 			method="excluirMesa">
 			<result type="json" />
 		</action>
-		
+
 		<action name="consultarSituacaoMesa" class="br.com.aquece.action.MesaAction"
 			method="consultarSituacaoMesa">
 			<result type="json" />
@@ -60,6 +60,15 @@
 			<result type="json" />
 		</action>
 
+		<action name="login" class="br.com.aquece.action.PerfilAction"
+			method="login">
+			<result type="json" />
+		</action>
+
+		<action name="logout" class="br.com.aquece.action.PerfilAction"
+			method="logout">
+			<result type="json" />
+		</action>
 		<!-- AJAX DE PRODUTOSACTION -->
 		<action name="inserirProduto" class="br.com.aquece.action.ProdutosAction"
 			method="inserirProduto">
@@ -84,6 +93,10 @@
 		<!-- AJAX DE VENDASACTION -->
 		<action name="inserirVendas" class="br.com.aquece.action.VendasAction"
 			method="inserirVendas">
+			<result type="json" />
+		</action>
+		<action name="inicializarTelaVendas" class="br.com.aquece.action.VendasAction"
+			method="inicializarTelaVendas">
 			<result type="json" />
 		</action>
 

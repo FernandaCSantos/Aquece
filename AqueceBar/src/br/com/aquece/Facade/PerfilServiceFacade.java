@@ -40,5 +40,7 @@ public interface PerfilServiceFacade {
 		 */
 		public void excluirPerfil(PerfilVO perfil);
 
+		public PerfilVO login(PerfilVO perfil);
+
 	}
 

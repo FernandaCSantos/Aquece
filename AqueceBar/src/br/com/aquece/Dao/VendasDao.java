@@ -1,5 +1,7 @@
 package br.com.aquece.Dao;
 
+import java.util.List;
+
 import br.com.aquece.Vo.VendasVO;
 
 /**
@@ -13,7 +15,7 @@ public interface VendasDao {
 	 * Método para realizar o cadastro de vendas.
 	 * @param venda
 	 */
-	public void inserirVendas(VendasVO venda);
+	public Integer inserirVendas(VendasVO venda, String status);
 	
 	/**
 	 * Método para realizar a exclusão de vendas.
@@ -38,5 +40,7 @@ public interface VendasDao {
 	 * @param venda
 	 */
 	public void inserirArquivoMortoVendas(VendasVO venda);
+
+	List<VendasVO> inicializarTelaVendas();
 
 }

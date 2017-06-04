@@ -11,12 +11,12 @@ public class PerfilDaoImpl extends Conexao implements PerfilDao {
 		try	{
 			perfil.setCod(lastId()+1);
 			open();
-			 stmt = con.prepareStatement("insert into perfil values (?,?,?,?)");
+			 stmt = con.prepareStatement("INSERT INTO PERFIL VALUES (?,?,?,?)");
 			 setDadosPerfil(perfil);
 			 stmt.execute();
 			close();
 		}catch (Exception e) {
-			new Exception("Erro Interno");
+			new Exception("Erro Interno.");
 		}		
 	}
 
@@ -25,31 +25,32 @@ public class PerfilDaoImpl extends Conexao implements PerfilDao {
 		Integer chave = null;
 		try {
 			open();
-			stmt = con.prepareStatement("select max(codPerfil) as maximo from perfil");
+			stmt = con.prepareStatement("SELECT MAX(CODPERFIL) AS MAXIMO FROM PERFIL");
 			resp = stmt.executeQuery();
 			if(resp.next()){
-			chave = (resp.getInt("maximo"));
+			chave = (resp.getInt("MAXIMO"));
 			}
 			close();
 		} catch (Exception e) {
-			new Exception("Erro Interno");
+			new Exception("Erro Interno.");
 		}
 	
 		return chave;
 	}
+	
 	@Override
 	public PerfilVO consultarPerfil(PerfilVO perfil) {
 		PerfilVO resp = null;
 
 		try	{
 			open();
-			 stmt = con.prepareStatement("select codPerfil,nomePerfil,usuario,senha from perfil where codPerfil= ?");
+			 stmt = con.prepareStatement("SELECT CODPERFIL,NOMEPERFIL,USUARIO,SENHA FROM PERFIL WHERE CODPERFIL = ?");
 			 stmt.setInt(1, perfil.getCod());
 			 rs=stmt.executeQuery();
-			 getPerfil(rs,resp);
+			 getPerfil(rs);
 			close();
 		}catch (Exception e) {
-			e.getMessage();
+			new Exception("Erro Interno.");
 		}		
 		
 		return resp;
@@ -59,7 +60,7 @@ public class PerfilDaoImpl extends Conexao implements PerfilDao {
 	public void alterarPerfil(PerfilVO perfil) {
 		try	{
 			open();
-			 stmt = con.prepareStatement("update perfil set nomePerfil = ?, usuario = ? , senha = ? where codPerfil = ?");
+			 stmt = con.prepareStatement("UPDATE PERFIL SET NOMEPERFIL = ?, USUARIO = ? , SENHA = ? WHERE CODPERFIL = ?");
 			 stmt.setString(1, perfil.getNomePerfil());
 			 stmt.setString(2, perfil.getUser());
 			 stmt.setString(3, perfil.getPassword());
@@ -67,7 +68,7 @@ public class PerfilDaoImpl extends Conexao implements PerfilDao {
 			 stmt.execute();
 			close();
 		}catch (Exception e) {
-			new Exception("Erro Interno");
+			new Exception("Erro Interno.");
 		}		
 	}
 	
@@ -80,12 +81,12 @@ public class PerfilDaoImpl extends Conexao implements PerfilDao {
 			inserirArquivoMortoPerfil(perfilvo);
 			
 			open();
-			 stmt = con.prepareStatement("delete from perfil where codPerfil = ?");
+			 stmt = con.prepareStatement("DELETE FROM PERFIL WHERE CODPERFIL = ?");
 			 stmt.setInt(1, perfil.getCod());
 			 stmt.execute();
 			close();
 		}catch (Exception e) {
-			new Exception("Erro Interno");
+			new Exception("Erro Interno.");
 		}	
 	}
 	
@@ -93,15 +94,32 @@ public class PerfilDaoImpl extends Conexao implements PerfilDao {
 	public void inserirArquivoMortoPerfil(PerfilVO perfil) {
 		try	{
 			openArquivoMorto();
-			 stmt = conArquivoMorto.prepareStatement("insert into perfil values (?,?,?,?)");
+			 stmt = conArquivoMorto.prepareStatement("INSERT INTO PERFIL VALUES (?,?,?,?)");
 			 setDadosPerfil(perfil);
 			 stmt.execute();
 			closeArquivoMorto();
 		}catch (Exception e) {
-			new Exception("Erro Interno");
+			new Exception("Erro Interno.");
 		}				
 	}
 
+	@Override
+	public PerfilVO login(PerfilVO perfil){
+		PerfilVO retorno = new PerfilVO();
+		ResultSet rs = null;
+		try	{
+			open();
+			 stmt = con.prepareStatement("SELECT * FROM PERFIL WHERE USUARIO = ? AND SENHA = ?");
+			 stmt.setString(1, perfil.getUser());
+			 stmt.setString(2, perfil.getPassword());
+			 rs = stmt.executeQuery();
+			 retorno = getPerfil(rs);
+			 close();
+		}catch (Exception e) {
+			new Exception("Erro Interno.");
+		}	
+		return retorno;
+	}
 	/**
 	 * Classe para inserir os dados do perfil;
 	 * @param perfil
@@ -132,14 +150,14 @@ public class PerfilDaoImpl extends Conexao implements PerfilDao {
 	 * Classe para resgatar os dados do perfil;
 	 * @param perfil
 	 */
-	public PerfilVO getPerfil(ResultSet rs, PerfilVO resp){
+	public PerfilVO getPerfil(ResultSet rs){
+		PerfilVO resp = new PerfilVO();
 		try{
 			if(rs.next()){
-				resp = new PerfilVO();
-				resp.setCod(rs.getInt("codPerfil"));
-				resp.setNomePerfil(rs.getString("nomePerfil"));
-				resp.setUser(rs.getString("usuario"));
-				resp.setPassword(rs.getString("senha"));
+				resp.setCod(rs.getInt("CODPERFIL"));
+				resp.setNomePerfil(rs.getString("NOMEPERFIL"));
+				resp.setUser(rs.getString("USUARIO"));
+				resp.setPassword(rs.getString("SENHA"));
 		 
 		}
 		}catch (Exception e) {

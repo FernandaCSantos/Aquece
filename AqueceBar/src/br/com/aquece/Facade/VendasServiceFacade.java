@@ -1,5 +1,7 @@
 package br.com.aquece.Facade;
 
+import java.util.List;
+
 import br.com.aquece.Vo.VendasVO;
 
 public interface VendasServiceFacade {
@@ -8,7 +10,7 @@ public interface VendasServiceFacade {
 	 * Método para realizar o cadastro de vendas.
 	 * @param venda
 	 */
-	public void inserirVendas(VendasVO venda);
+	public Integer inserirVendas(VendasVO venda, String status);
 	
 	/**
 	 * Método para realizar a exclusão de vendas.
@@ -33,5 +35,7 @@ public interface VendasServiceFacade {
 	 * @param venda
 	 */
 	public void inserirArquivoMortoVendas(VendasVO venda);
+
+	List<VendasVO> inicializarTelaVendas();
 
 }

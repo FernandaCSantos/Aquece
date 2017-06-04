@@ -18,7 +18,8 @@ public class MesaDaoImpl extends Conexao implements MesaDao {
 	public void inserirMesa(MesaVO mesa) {
 		try {
 			open();
-			stmt = con.prepareStatement("insert into mesa values (?)");
+			mesa.setSituacao(0);
+			stmt = con.prepareStatement("INSERT INTO MESA VALUES (?,?)");
 			setDadosMesa(mesa);
 			stmt.execute();
 			close();
@@ -36,7 +37,7 @@ public class MesaDaoImpl extends Conexao implements MesaDao {
 
 		try {
 			open();
-			stmt = con.prepareStatement("select * from mesa where codMesa = ?");
+			stmt = con.prepareStatement("SELECT * FROM MESA WHERE CODMESA = ?");
 			stmt.setInt(1, mesa.getNumeroMesa());
 			rs = stmt.executeQuery();
 			getMesa(rs);
@@ -58,7 +59,7 @@ public class MesaDaoImpl extends Conexao implements MesaDao {
 		List<MesaVO> lst = new ArrayList<MesaVO>();
 		try {
 			open();
-			stmt = con.prepareStatement("select * from mesa order by codMesa");
+			stmt = con.prepareStatement("SELECT * FROM MESA ORDER BY CODMESA");
 			rs = stmt.executeQuery();
 			while (rs.next()) {
 				resp = getMesa(rs);
@@ -76,13 +77,13 @@ public class MesaDaoImpl extends Conexao implements MesaDao {
 		MesaVO resultado = new MesaVO();
 		try {
 				try {
-					resultado.setNumeroMesa(rs.getInt("codMesa"));
+					resultado.setNumeroMesa(rs.getInt("CODMESA"));
 				} catch (Exception e) {
 					resultado.setNumeroMesa(null);
 				}
 
 				try {
-					resultado.setSituacao(rs.getInt("situacao"));
+					resultado.setSituacao(rs.getInt("SITUACAO"));
 				} catch (Exception e) {
 					resultado.setSituacao(null);
 				}
@@ -102,7 +103,7 @@ public class MesaDaoImpl extends Conexao implements MesaDao {
 	public void inserirArquivoMortoMesa(MesaVO mesa) {
 		try {
 			openArquivoMorto();
-			stmt = conArquivoMorto.prepareStatement("insert into mesa values (?)");
+			stmt = conArquivoMorto.prepareStatement("INSERT INTO MESA VALUES (?)");
 			setDadosMesa(mesa);
 			stmt.execute();
 			closeArquivoMorto();
@@ -122,7 +123,7 @@ public class MesaDaoImpl extends Conexao implements MesaDao {
 			inserirArquivoMortoMesa(mesavo);
 
 			open();
-			stmt = con.prepareStatement("delete from mesa where codMesa = ?");
+			stmt = con.prepareStatement("DELETE FROM MESA WHERE CODMESA = ?");
 			stmt.setInt(1, mesa.getNumeroMesa());
 			stmt.execute();
 			close();
@@ -139,6 +140,7 @@ public class MesaDaoImpl extends Conexao implements MesaDao {
 	public void setDadosMesa(MesaVO mesa) {
 		try {
 			stmt.setInt(1, mesa.getNumeroMesa());
+			stmt.setInt(2, mesa.getSituacao());
 		} catch (Exception e) {
 			new Exception("Ocorreu um erro ao inserir os dados.");
 

@@ -16,12 +16,12 @@
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+	<input type="hidden" id="codigoPerfilHidden" />
+	<input type="hidden" id="nomePerfilHidden" />
 	<div id="body">
 		<div id="main-header">
 			<h1>Painel</h1>
-			<span id="user-info"> Usuario <a href="javascript:void(0)"
-				class="entypo-logout" alt="Logout" title="Logout"></a>
-			</span>
+			<span id="user-info"> Login </span>
 		</div>
 		<div id="main-navigation">
 			<ul>
@@ -30,16 +30,21 @@
 					class="entypo-map"
 					onclick="javascript:carregarIniciar();AQUECE.consultarMesas();">Vendas<span
 						class="shortcut-info"></span></a></li>
-				<li class="header">Administração</li>
-				<li><a href="javascript:void(0)" data-nav-shortcut="111"
-					class="entypo-cog" onclick="javascript:carregarConfiguracoes();">Configurações<span
-						class="shortcut-info"></span></a></li>
-				<li><a href="javascript:void(0)" data-nav-shortcut="49"
-					class="entypo-layout" onclick="javascript:carregarProduto();">Produto<span
-						class="shortcut-info"></span></a></li>
-				<li><a href="javascript:void(0)" data-nav-shortcut="51"
-					class="entypo-users" onclick="javascript:carregarFuncionario();">Funcionário<span
-						class="shortcut-info"></span></a></li>
+				<div id="perfil_adm">
+					<li class="header">Administra&ccedil&atildeo</li>
+					<li><a href="javascript:void(0)" data-nav-shortcut="111"
+						class="entypo-cog" onclick="javascript:carregarConfiguracoes();">Configura&ccedil&otildees<span
+							class="shortcut-info"></span></a></li>
+					<li><a href="javascript:void(0)" data-nav-shortcut="49"
+						class="entypo-layout" onclick="javascript:carregarProduto();">Produto<span
+							class="shortcut-info"></span></a></li>
+					<li><a href="javascript:void(0)" data-nav-shortcut="51"
+						class="entypo-users" onclick="javascript:carregarFuncionario();">Funcion&aacuterio<span
+							class="shortcut-info"></span></a></li>
+					<li><a href="javascript:void(0)" data-nav-shortcut="51"
+						class="entypo-users" onclick="javascript:carregarMesa();">Mesa<span
+							class="shortcut-info"></span></a></li>
+				</div>
 			</ul>
 			<!-- 			<span class="shortcut-label entypo-keyboard">ctrl+shift for -->
 			<!-- 				shortcuts</span> -->
@@ -53,14 +58,31 @@
 			<ul id="partial-navigation">
 			</ul>
 			<div id="partial-content">
-				
+
 				<div id="funcionario" style="display: none;">
-					<button style="margin-bottom: 1%; width: 10%; height: 50px; color: white; background-color: grey;" type="button" data-toggle="modal" data-target="#cadastrarPerfil" onclick="javascript:AQUECE.resetarFormulario(formCadastrarPerfil);">Cadastrar
+					<button
+						style="margin-bottom: 1%; width: 10%; height: 50px; color: white; background-color: grey;"
+						type="button" data-toggle="modal" data-target="#cadastrarPerfil"
+						onclick="javascript:AQUECE.resetarFormulario(formCadastrarPerfil);">Cadastrar
 					</button>
 					&nbsp;
-					<button style="margin-bottom: 1%; width: 10%; height: 50px; color: white; background-color: grey;" type="button" data-toggle="modal" data-target="#alterarPerfil" onclick="javascript:AQUECE.resetarFormulario(formAlterarPerfil);">Alterar
+					<button
+						style="margin-bottom: 1%; width: 10%; height: 50px; color: white; background-color: slategrey;"
+						type="button" data-toggle="modal" data-target="#alterarPerfil"
+						onclick="javascript:AQUECE.resetarFormulario(formAlterarPerfil);">Alterar
 					</button>
 				</div>
+
+				<div id="mesa" style="display: none;">
+					<br> 
+						<label for="field2"> <span>Número da Mesa:</span><input type="text" id="mesaCadastrar" required="true">
+						</label>   
+					<button
+						style="margin-bottom: 1%; width: 10%; height: 100%; color: white; background-color: grey;"
+						type="button" onclick="javascript:AQUECE.cadastrarMesa();">Cadastrar
+					</button>
+				</div>
+
 
 				<div id="produto" style="display: none">
 					<button
@@ -76,9 +98,10 @@
 					</button>
 				</div>
 				<div id="consultarMesa" style="display: none">
+					
 					<form class="form-style-4" action="" method="post">
 						<label for="field1"> <span
-							style="width: 100px; line-height: 255%;">Mesa 1 </span> <input
+							style="width: 100px; line-height: 255%;" id="mesa_span"></span> <input
 							type="button" value="Voltar"
 							onclick="javascript:voltarIniciarMesas();"> &nbsp;<input
 							type="button" value="Imprimir"
@@ -120,21 +143,29 @@
 			</div>
 			<div class="modal-body">
 				<center>
+				<input type="hidden" id="mesa_venda"/> 
+				<input type="hidden" id="status"/>
+				<input type="hidden" id="valorProduto"/>
+					<p>Atendente:</p>
+					<input id="perfil" type="text" value="1" class="form-group">
 					<p>C&oacutedigo:</p>
-					<input type="text" class="form-group">
-					<p>Nome Produto:</p>
-					<input type="text" class="form-group">
+					<input id="codigoProdutoVenda" onblur="javascript:AQUECE.consultarProdutoVenda();" type="text" class="form-group">
 					<p>Descri&ccedil&atildeo Produto:</p>
-					<input type="text" class="form-group">
+					<input type="text" id="descricaoProdutoVenda" class="form-group">
 					<p>Pre&ccedilo Produto:</p>
-					<input type="text" class="form-group">
+					<input type="text" id="precoProdutoVenda" class="form-group">
+					<p>Quantidade Produto:</p>
+					<input type="text" id="quantidadeProdutoVenda" onkeyup="javascript: AQUECE.alterarQuantidade();" value="1" class="form-group">
+					<p>Subtotal:</p>
+					<input type="text" id="subtotalPrecoProdutoVenda" class="form-group">
+					
 				</center>
 			</div>
 			<div class="modal-footer">
 				<center>
 					<button type="button"
 						style="background-color: #576E86; color: white;"
-						class="btn btn-default" data-dismiss="modal">Adicionar</button>
+						class="btn btn-default" onclick="javascript:AQUECE.cadastrarVendas();" data-dismiss="modal">Adicionar</button>
 					<button type="button"
 						style="background-color: #576E86; color: white;"
 						class="btn btn-default" data-dismiss="modal">Fechar</button>
@@ -162,7 +193,7 @@
 						class="btn btn-default">Sim</button>
 					<button type="button"
 						style="background-color: #576E86; color: white;"
-						class="btn btn-default" data-dismiss="modal">NÃ£o</button>
+						class="btn btn-default" data-dismiss="modal">N&atildeo</button>
 				</center>
 			</div>
 
@@ -184,7 +215,8 @@
 				<div class="modal-body">
 					<center>
 						<p>Perfil:</p>
-						<input type="text" id="nomeCadastrarPerfil" disabled class="form-group" value="GARCOM">
+						<input type="text" id="nomeCadastrarPerfil" disabled
+							class="form-group" value="GARCOM">
 						<p>Usuario:</p>
 						<input type="text" id="usuarioCadastrarPerfil" class="form-group">
 					</center>
@@ -218,7 +250,8 @@
 				<div class="modal-body">
 					<center>
 						<p>Perfil:</p>
-						<input type="text" id="nomeAlterarPerfil" disabled class="form-group" value="GARCOM">
+						<input type="text" id="nomeAlterarPerfil" disabled
+							class="form-group" value="GARCOM">
 						<p>Usuario:</p>
 						<input type="text" id="usuarioAlterarPerfil" class="form-group">
 					</center>
@@ -284,6 +317,9 @@
 		</div>
 	</div>
 </form>
+
+
+
 <!-- Modal adicionar produto-->
 <form id="formAlterarProduto">
 	<div id="alterarProduto" class="modal fade" role="dialog">
@@ -306,8 +342,8 @@
 						<p>Pre&ccedilo Produto:</p>
 						<input type="text" id="precoAlterarProduto" class="form-group">
 						<p>Adicionar Quantidade:</p>
-						<span id="quantidadeAtual"></span>&nbsp+<input type="text" id="quantidadeAlterarProduto"
-							class="form-group">
+						<span id="quantidadeAtual"></span>&nbsp+<input type="text"
+							id="quantidadeAlterarProduto" class="form-group">
 					</center>
 				</div>
 				<div class="modal-footer">
@@ -319,6 +355,73 @@
 						<button type="button"
 							style="background-color: #576E86; color: white;"
 							class="btn btn-default" data-dismiss="modal">Fechar</button>
+					</center>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+</form>
+
+
+
+
+<!-- Modal adicionar produto-->
+<form id="formLogin">
+	<div id="modalLogin" class="modal fade" role="dialog">
+		<div class="modal-dialog modal-sm">
+
+			<!-- Modal content-->
+			<div class="modal-content form-style-4">
+				<div class="modal-header">
+					<h4 class="modal-title">Login</h4>
+				</div>
+				<div class="modal-body">
+					<center>
+						<p>Usu&aacuterio:</p>
+						<input type="text" id="usuario" class="form-group">
+						<p>Senha:</p>
+						<input type="password" id="senha" class="form-group">
+					</center>
+				</div>
+				<div class="modal-footer">
+					<center>
+						<button type="button"
+							style="background-color: #576E86; color: white;"
+							class="btn btn-default" data-dismiss="modal"
+							onclick="javascript:AQUECE.login();">Entrar</button>
+						<button type="button"
+							style="background-color: #576E86; color: white;"
+							class="btn btn-default" data-dismiss="modal">Fechar</button>
+					</center>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+</form>
+
+<!-- Modal adicionar produto-->
+<form id="formLogout">
+	<div id="modalLogout" class="modal fade" role="dialog">
+		<div class="modal-dialog modal-sm">
+
+			<!-- Modal content-->
+			<div class="modal-content form-style-4">
+				<div class="modal-header">
+					<h4 class="modal-title">Logout</h4>
+				</div>
+				<div class="modal-body">
+					<center>
+						<label> Deseja Sair?</label>
+						<button type="button"
+							style="background-color: #576E86; color: white;"
+							class="btn btn-default" onclick="javascript:AQUECE.logout();" data-dismiss="modal">Sim</button>
+						<button type="button"
+							style="background-color: #576E86; color: white;"
+							class="btn btn-default" data-dismiss="modal">N&atildeo</button>
 					</center>
 				</div>
 

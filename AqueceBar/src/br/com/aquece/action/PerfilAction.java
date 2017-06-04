@@ -36,6 +36,17 @@ public class PerfilAction extends ActionSupport{
 		perfilServiceFacade.excluirPerfil(perfilVO);
 		return SUCCESS;
 	}
+	
+	public String login(){
+		perfilVO = perfilServiceFacade.login(perfilVO);
+
+		return SUCCESS;
+	}
+
+	public String logout(){
+		perfilServiceFacade.login(perfilVO);
+		return SUCCESS;
+	}
 
 
 	public PerfilVO getPerfilVO() {

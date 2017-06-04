@@ -17,6 +17,7 @@ public class VendasVO implements Serializable{
 	private Integer cod;
 	private Calendar horaAbertura;
 	private Calendar horaFechamento;
+	private Double quantidade;
 	
 	public MesaVO getMesaVO() {
 		return mesaVO;
@@ -61,6 +62,13 @@ public class VendasVO implements Serializable{
 	}
 	public void setHoraFechamento(Calendar horaFechamento) {
 		this.horaFechamento = horaFechamento;
+	}
+	
+	public Double getQuantidade() {
+		return quantidade;
+	}
+	public void setQuantidade(Double quantidade) {
+		this.quantidade = quantidade;
 	}
 	@Override
 	public String toString() {

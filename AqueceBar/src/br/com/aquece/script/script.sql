@@ -6,13 +6,11 @@ create table produto(codProduto int not null primary key , descricao varchar(50)
 
 create table perfil(codPerfil int not null primary key , nomePerfil varchar(50) not null, usuario varchar(30), senha varchar(30));
 
-create table mesa(codMesa int not null primary key);
+create table mesa(codMesa int not null primary key, situacao int);
 
-/**
- * REFORMULAR SQL
- */
-create table vendas(codVenda int not null primary key, codMesa int not null ,codProduto int , codPerfil int not null,
-horaAbertura timestamp not null ,horaFechamento timestamp , total double);
+create table vendas(codVenda int not null , codMesa int not null ,codProduto int , codPerfil int not null,
+horaAbertura timestamp not null ,horaFechamento timestamp , quantidade double);
+
 
 
 insert into mesa values(1);

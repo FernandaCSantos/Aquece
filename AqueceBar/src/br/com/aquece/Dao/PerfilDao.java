@@ -40,4 +40,6 @@ public interface PerfilDao {
 	 */
 	public void excluirPerfil(PerfilVO produto);
 
+	public PerfilVO login(PerfilVO perfil);
+
 }

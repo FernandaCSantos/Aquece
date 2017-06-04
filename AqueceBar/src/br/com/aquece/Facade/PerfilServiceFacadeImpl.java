@@ -47,6 +47,12 @@ public class PerfilServiceFacadeImpl implements PerfilServiceFacade {
 	public void excluirPerfil(PerfilVO perfil) {
 		perfilDao.excluirPerfil(perfil);
 	}
+	
+	@Override
+	public PerfilVO login(PerfilVO perfil){
+		return perfilDao.login(perfil);
+	}
+
 
 	public PerfilDaoImpl getPerfilDao() {
 		return perfilDao;
@@ -55,6 +61,8 @@ public class PerfilServiceFacadeImpl implements PerfilServiceFacade {
 	public void setPerfilDao(PerfilDaoImpl perfilDao) {
 		this.perfilDao = perfilDao;
 	}
+	
+	
 
 	
 }

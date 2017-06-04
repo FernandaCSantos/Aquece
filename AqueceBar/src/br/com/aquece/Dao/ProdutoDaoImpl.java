@@ -13,12 +13,12 @@ public class ProdutoDaoImpl extends Conexao implements ProdutoDao{
 	public void inserirProduto(ProdutoVO produto) {
 		try	{
 			open();
-			 stmt = con.prepareStatement("insert into produto values (?,?,?,?)");
+			 stmt = con.prepareStatement("INSERT INTO PRODUTO VALUES (?,?,?,?)");
 			 setDadosProduto(produto);
 			 stmt.execute();
 			close();
 		}catch (Exception e) {
-			new Exception("Erro Interno");
+			new Exception("Erro Interno.");
 		}		
 	}
 
@@ -32,13 +32,14 @@ public class ProdutoDaoImpl extends Conexao implements ProdutoDao{
 
 		try	{
 			open();
-			 stmt = con.prepareStatement("select * from produto where codProduto = ?");
+			 stmt = con.prepareStatement("SELECT * FROM PRODUTO WHERE CODPRODUTO = ?");
 			 stmt.setInt(1, produto.getCod());
 			 rs=stmt.executeQuery();
 			resp = getProduto(rs);
 			close();
 		}catch (Exception e) {
-			e.getMessage();
+			new Exception("Erro Interno.");		
+		
 		}		
 		
 		return resp;
@@ -51,7 +52,7 @@ public class ProdutoDaoImpl extends Conexao implements ProdutoDao{
 	public void alterarProduto(ProdutoVO produto) {
 		try	{
 			open();
-			 stmt = con.prepareStatement("update produto set descricao = ?, preco = ? , quantidade = ? where codProduto = ?");
+			 stmt = con.prepareStatement("UPDATE PRODUTO SET DESCRICAO = ?, PRECO = ? , QUANTIDADE = ? WHERE CODPRODUTO = ?");
 			 stmt.setString(1, produto.getDesc());
 			 stmt.setDouble(2, produto.getPreco());
 			 stmt.setInt(3, produto.getQuantidade());
@@ -59,7 +60,7 @@ public class ProdutoDaoImpl extends Conexao implements ProdutoDao{
 			 stmt.execute();
 			close();
 		}catch (Exception e) {
-			new Exception("Erro Interno");
+			new Exception("Erro Interno.");	
 		}				
 	}
 	
@@ -74,12 +75,13 @@ public class ProdutoDaoImpl extends Conexao implements ProdutoDao{
 			inserirArquivoMortoProduto(produtovo);
 			
 			open();
-			 stmt = con.prepareStatement("delete from produto where codProduto = ?");
+			 stmt = con.prepareStatement("DELETE FROM PRODUTO WHERE CODPRODUTO = ?");
 			 stmt.setInt(1, produto.getCod());
 			 stmt.execute();
 			close();
 		}catch (Exception e) {
-			new Exception("Erro Interno");
+			new Exception("Erro Interno.");	
+			
 		}				
 	}
 	
@@ -90,12 +92,13 @@ public class ProdutoDaoImpl extends Conexao implements ProdutoDao{
 	public void inserirArquivoMortoProduto(ProdutoVO produto) {
 		try	{
 			openArquivoMorto();
-			 stmt = conArquivoMorto.prepareStatement("insert into produto values (?,?,?,?)");
+			 stmt = conArquivoMorto.prepareStatement("INSERT INTO PRODUTO VALUES (?,?,?,?)");
 			 setDadosProduto(produto);
 			 stmt.execute();
 			closeArquivoMorto();
 		}catch (Exception e) {
-			new Exception("Erro Interno");
+			new Exception("Erro Interno.");	
+			
 		}				
 	}
 	
@@ -131,10 +134,10 @@ public class ProdutoDaoImpl extends Conexao implements ProdutoDao{
 		ProdutoVO retorno = new ProdutoVO();
 		try{
 			if(rs.next()){
-				retorno.setCod(rs.getInt("codProduto"));
-				retorno.setDesc(rs.getString("descricao"));
-				retorno.setPreco(rs.getDouble("preco"));
-				retorno.setQuantidade(rs.getInt("quantidade"));
+				retorno.setCod(rs.getInt("CODPRODUTO"));
+				retorno.setDesc(rs.getString("DESCRICAO"));
+				retorno.setPreco(rs.getDouble("PRECO"));
+				retorno.setQuantidade(rs.getInt("QUANTIDADE"));
 			}
 		}catch (Exception e) {
 			new Exception("Ocorreu um erro ao consultar os dados.");
